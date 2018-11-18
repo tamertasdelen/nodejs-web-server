@@ -1,17 +1,9 @@
 var express = require("express");
-var app = express();
-var port = 3000;
 
-var middleWare = {
-    requireAuthentication : function(req, res, next){
-        console.log("Özel Root Girildi");
-        next();
-    },
-    logger: function(req, res, next){
-        console.log(req.method + " " + req.originalUrl );
-        next();
-    }
-}
+var middleWare = require("./middleware");
+var app = express();
+var port = process.env.PORT || 3000;
+
 
 app.use(middleWare.logger);
 
